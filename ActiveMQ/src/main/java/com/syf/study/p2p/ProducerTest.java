@@ -25,8 +25,8 @@ public class ProducerTest {
 		
 		//3.创建会话
 		//参数1:设置是否需要以实物方式提交
-		//参数2：消息方式，默认采用自动签收
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		//参数2：消息方式，默认采用自动签收(如果发送者设置手动签收，不会影响消费者的签收方式)
+		Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		//4.创建目标（主题）
 		Queue queue = session.createQueue(myQueue);
 
@@ -36,7 +36,7 @@ public class ProducerTest {
 		//PERSISTENT（持续化）
 		//NON_PERSISTENT（非持续化）
 		producer.setDeliveryMode(DeliveryMode.PERSISTENT);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 10; i < 20; i++) {
 			//6.创建消息
 			TextMessage text=session.createTextMessage("主题内容："+i);
 			System.out.println(text);

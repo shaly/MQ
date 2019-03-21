@@ -29,7 +29,7 @@ public class CustomerTest1 {
 		//参数2：消息方式，默认采用自动签收
 				//AUTO_ACKNOWLEDGE:自动签收，JMS默认是自动签收
 				//CLIENT_ACKNOWLEDGE:手动签收
-		Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		//4.创建目标（队列）
 		Queue queue = session.createQueue(myQueue);
 
@@ -46,7 +46,7 @@ public class CustomerTest1 {
 					
 					//手动进行确认签收，告诉消息中间件已经消费成功,
 					//如果不进行手动签收，消息依旧存在中间件中未被消费
-					textMessage.acknowledge();
+					//textMessage.acknowledge();
 				} catch (JMSException e) {
 					System.err.println("消费消息报错："+textMessage);
 					e.printStackTrace();
