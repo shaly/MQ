@@ -1,0 +1,18 @@
+spring:
+  activemq:
+  ###MQ连接通讯地址
+    broker-url: tcp://127.0.0.1:61616
+  ###账号
+    user: admin
+  ###密码  
+    password: admin
+  ###springboot整合mq默认是没有开启发布订阅的，需要自己开启发布权限
+#### 开启发布订阅   
+  jms: 
+    pub-sub-domain: true
+
+
+###自定义队列    
+my_topic: springboot2.0-topic
+server:
+  port: 8082
