@@ -10,9 +10,9 @@ spring:
   ###163ÓÊÏä·şÎñÆ÷
     host: smtp.163.com
     ###·¢ËÍÈËÕËºÅ
-    username: yushengjun6442018@163.com
+    username: ÓÊÏäÕËºÅ
     ##ÊÚÈ¨Âë
-    password: yushengjun644
+    password: ÊÚÈ¨ÂëÊÚÈ¨Âë
     enable:  true
     smtp:
       auth: true

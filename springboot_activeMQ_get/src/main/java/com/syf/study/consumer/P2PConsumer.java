@@ -41,8 +41,8 @@ public class P2PConsumer {
 		// 邮件来自 自己发自己
 		message.setFrom(eamil);
 		// 发送给谁
-	//	message.setTo("15774209440@163.com");
-		message.setTo("283199611@qq.com");
+	//	message.setTo("");
+		message.setTo("xxx@qq.com");
 		// 邮件标题
 		message.setSubject("1233211234567");
 		// 邮件内容

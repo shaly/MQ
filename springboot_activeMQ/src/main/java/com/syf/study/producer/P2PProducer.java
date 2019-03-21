@@ -21,7 +21,7 @@ public class P2PProducer {
 		String userName=System.currentTimeMillis()+"";
 		JSONObject j=new JSONObject();
 		j.put("userName", userName);
-		j.put("email", "yushengjun6442018@163.com");
+		j.put("email", "xxx@xx.com");
 		String msg=j.toJSONString();
 		jmsMessagingTemplate.convertAndSend(queue,msg);
 		System.out.println("采用点对点"+msg);
