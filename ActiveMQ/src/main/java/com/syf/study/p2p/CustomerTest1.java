@@ -46,7 +46,7 @@ public class CustomerTest1 {
 					
 					//手动进行确认签收，告诉消息中间件已经消费成功,
 					//如果不进行手动签收，消息依旧存在中间件中未被消费
-					//textMessage.acknowledge();
+					textMessage.acknowledge();
 				} catch (JMSException e) {
 					System.err.println("消费消息报错："+textMessage);
 					e.printStackTrace();
