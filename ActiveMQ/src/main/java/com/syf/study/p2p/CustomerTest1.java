@@ -25,16 +25,17 @@ public class CustomerTest1 {
 		connection.start();//启动连接
 		
 		//3.创建会话
-		//参数1:设置是否需要以实物方式提交
+		//参数1:设置是否需要以事务方式提交
 		//参数2：消息方式，默认采用自动签收
 				//AUTO_ACKNOWLEDGE:自动签收，JMS默认是自动签收
 				//CLIENT_ACKNOWLEDGE:手动签收
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		final Session session = connection.createSession(true, Session.CLIENT_ACKNOWLEDGE);
 		//4.创建目标（队列）
 		Queue queue = session.createQueue(myQueue);
 
 		//5.创建消费者
 		MessageConsumer consumer = session.createConsumer(queue);
+		final int i=1;
 		//6.启动监听 监听消息
 		consumer.setMessageListener(new MessageListener() {
 			
@@ -46,7 +47,24 @@ public class CustomerTest1 {
 					
 					//手动进行确认签收，告诉消息中间件已经消费成功,
 					//如果不进行手动签收，消息依旧存在中间件中未被消费
-					textMessage.acknowledge();
+//					if("主题内容：2".equals(textMessage.getText())||"9".equals(textMessage.getText())) {
+//						System.out.println("*进来了："+textMessage.getText());
+//						textMessage.acknowledge();
+//					}else {
+//						System.out.println("***"+(textMessage.getText().equals("1"))+"没进来："+textMessage.getText());
+//					}
+//					textMessage.acknowledge();
+					
+					
+					
+					
+					if("主题内容：1".equals(textMessage.getText())||"9".equals(textMessage.getText())) {
+						System.out.println("*进来了："+textMessage.getText());
+						session.commit();
+					}else {
+						System.out.println("没进来："+textMessage.getText());
+					}
+//					session.commit();
 				} catch (JMSException e) {
 					System.err.println("消费消息报错："+textMessage);
 					e.printStackTrace();

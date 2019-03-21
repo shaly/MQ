@@ -40,15 +40,15 @@ public class ProducerTest {
 		//PERSISTENT（持续化）
 		//NON_PERSISTENT（非持续化）
 		producer.setDeliveryMode(DeliveryMode.PERSISTENT);
-		for (int i = 201; i < 220; i++) {
+		for (int i =1; i < 10; i++) {
 			//6.创建消息
 			TextMessage text=session.createTextMessage("主题内容："+i);
 			System.out.println(text);
 			//Thread.currentThread().sleep(10000);
 			//7.发送消息
 			producer.send(text);
-			session.commit();
 		}
+		session.commit();
 		//8.消息发送完毕
 		connection.close();
 	}
