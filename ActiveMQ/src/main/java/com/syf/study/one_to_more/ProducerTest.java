@@ -32,7 +32,7 @@ public class ProducerTest {
 
 		//5.创建生产者
 		MessageProducer producer = session.createProducer(topic);
-		//producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+		//producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 		for (int i = 90; i < 100; i++) {
 			//6.创建消息
 			TextMessage text=session.createTextMessage("主题内容："+i);
