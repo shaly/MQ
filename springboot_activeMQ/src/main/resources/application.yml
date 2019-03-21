@@ -9,6 +9,6 @@ spring:
 
 
 ###自定义队列    
-my_queue: springboot2.0-queue
+my_queue: springboot2.0-mail
 server:
   port: 8083

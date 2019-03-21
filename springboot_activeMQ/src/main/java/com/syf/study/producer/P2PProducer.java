@@ -7,6 +7,8 @@ import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSONObject;
+
 @Component
 public class P2PProducer {
 	@Autowired
@@ -16,9 +18,13 @@ public class P2PProducer {
 	
 	@Scheduled(fixedDelay=5000)
 	public void send() {
-		String time=System.currentTimeMillis()+"";
-		jmsMessagingTemplate.convertAndSend(queue,time);
-		System.out.println("采用点对点"+time);
+		String userName=System.currentTimeMillis()+"";
+		JSONObject j=new JSONObject();
+		j.put("userName", userName);
+		j.put("email", "yushengjun6442018@163.com");
+		String msg=j.toJSONString();
+		jmsMessagingTemplate.convertAndSend(queue,msg);
+		System.out.println("采用点对点"+msg);
 	}
 	
 
