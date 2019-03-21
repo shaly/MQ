@@ -35,8 +35,8 @@ public class ProducerTest {
 		//设置消息是否持久化，默认是持续化
 		//PERSISTENT（持续化）
 		//NON_PERSISTENT（非持续化）
-		//producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-		for (int i = 50; i < 60; i++) {
+		producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+		for (int i = 0; i < 10; i++) {
 			//6.创建消息
 			TextMessage text=session.createTextMessage("主题内容："+i);
 			System.out.println(text);
